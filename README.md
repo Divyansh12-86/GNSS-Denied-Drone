@@ -27,13 +27,12 @@ To convincingly simulate a physical drone, the system is divided into two logica
 
 Below is the exhaustive file and directory structure for this ROS 2 workspace:
 
-\`\`\`text
+<pre>
 drone_sitl_ws/
 ├── Dockerfile                      # Your edge compute emulator configuration
 ├── requirements.txt                # Python dependencies for evaluation scripts
 ├── README.md                       # This project documentation
 └── src/
-    │
     ├── drone_bringup/              # Master launch package
     │   ├── CMakeLists.txt
     │   ├── package.xml
@@ -41,7 +40,6 @@ drone_sitl_ws/
     │   │   └── sim_and_slam.launch.py
     │   └── config/
     │       └── rviz_config.rviz    # Saves visualization window layout
-    │
     ├── drone_description/          # The 3D model (<350mm constraint)
     │   ├── CMakeLists.txt
     │   ├── package.xml
@@ -49,7 +47,6 @@ drone_sitl_ws/
     │   │   └── quadcopter.urdf.xacro # The exact physical/sensor definitions
     │   └── meshes/
     │       └── drone_frame.dae     # Visual CAD files for the drone body
-    │
     ├── drone_gazebo/               # The environment (<15 lux constraint)
     │   ├── CMakeLists.txt
     │   ├── package.xml
@@ -59,25 +56,23 @@ drone_sitl_ws/
     │       └── warehouse_walls/    # 3D assets for the simulation world
     │           ├── model.sdf
     │           └── model.config
-    │
     ├── drone_slam/                 # The "Jetson Brain" SLAM implementation
     │   ├── CMakeLists.txt
     │   ├── package.xml
     │   ├── launch/
-    │   │   └── slam_pipeline.launch.py # Launched exclusively inside the Docker container
+    │   │   └── slam_pipeline.launch.py # Launched inside Docker container
     │   └── config/
-    │       └── slam_params.yaml    # SLAM algorithm tuning and parameter limits
-    │
+    │       └── slam_params.yaml    # SLAM algorithm tuning
     └── drone_eval/                 # Evaluation scripts (Python package)
         ├── setup.py                # Build instructions for Python ROS 2 nodes
         ├── setup.cfg
         ├── package.xml
         ├── resource/
-        │   └── drone_eval          # Required blank marker file for ROS 2 Python packages
+        │   └── drone_eval          # Required blank marker file
         └── drone_eval/
             ├── __init__.py
             └── measure_latency.py  # Script calculating <50ms constraint
-\`\`\`
+</pre>
 
 ---
 
@@ -94,7 +89,8 @@ Before running this project, ensure you have the following installed on an Ubunt
 ## 🚀 Installation & Setup
 
 **1. Clone the repository and install dependencies:**
-\`\`\`bash
+
+```bash
 mkdir -p ~/drone_sitl_ws/src
 cd ~/drone_sitl_ws
 # (Clone or copy your project files into the src directory here)
@@ -105,7 +101,6 @@ pip install -r requirements.txt
 # Install ROS 2 dependencies using rosdep
 rosdep update
 rosdep install --from-paths src --ignore-src -r -y
-\`\`\`
 
 **2. Build the Host Workspace (Simulation):**
 \`\`\`bash
