@@ -1,0 +1,14 @@
+# Python Evaluation Dependencies for SITL Drone Project
+
+# Core data manipulation and plotting for latency/drift reports
+numpy>=1.21.0
+matplotlib>=3.5.0
+pandas>=1.4.0
+
+# Evo: An excellent Python package for evaluating odometry and SLAM.
+# This is crucial for Deliverable 4 to automatically compare Ground Truth vs Estimated Trajectory
+evo>=1.23.1
+
+# Standard Python tools
+setuptools>=58.2.0
+pyyaml>=6.0
