@@ -1,0 +1,2 @@
+[console_scripts]
+measure_latency = drone_eval.measure_latency:main

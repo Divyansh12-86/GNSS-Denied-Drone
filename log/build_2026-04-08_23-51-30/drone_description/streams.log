@@ -1,0 +1,43 @@
+[0.028s] Invoking command in '/home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake /home/divyansh/Desktop/GNSS-Denied-Drone/src/drone_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_description
+[0.393s] -- The C compiler identification is GNU 13.3.0
+[0.393s] -- The CXX compiler identification is GNU 13.3.0
+[0.393s] -- Detecting C compiler ABI info
+[0.433s] -- Detecting C compiler ABI info - done
+[0.454s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.454s] -- Detecting C compile features
+[0.455s] -- Detecting C compile features - done
+[0.471s] -- Detecting CXX compiler ABI info
+[0.673s] -- Detecting CXX compiler ABI info - done
+[0.697s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.698s] -- Detecting CXX compile features
+[0.699s] -- Detecting CXX compile features - done
+[0.718s] -- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.949s] -- Found Python3: /home/divyansh/Desktop/GNSS-Denied-Drone/.venv/bin/python3 (found version "3.12.3") found components: Interpreter 
+[1.109s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[1.440s] -- Configuring done (1.4s)
+[1.443s] -- Generating done (0.0s)
+[1.447s] -- Build files have been written to: /home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_description
+[1.455s] Invoked command in '/home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake /home/divyansh/Desktop/GNSS-Denied-Drone/src/drone_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_description
+[1.457s] Invoking command in '/home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --build /home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_description -- -j8 -l8
+[1.535s] Invoked command in '/home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --build /home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_description -- -j8 -l8
+[1.537s] Invoking command in '/home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --install /home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_description
+[1.550s] -- Install configuration: ""
+[1.551s] -- Execute custom install script
+[1.552s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_description/share/drone_description/urdf/drone.urdf
+[1.568s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_description/share/drone_description/urdf/quadcopter.urdf.xacro
+[1.584s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_description/share/ament_index/resource_index/package_run_dependencies/drone_description
+[1.603s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_description/share/ament_index/resource_index/parent_prefix_path/drone_description
+[1.620s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_description/share/drone_description/environment/ament_prefix_path.sh
+[1.637s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_description/share/drone_description/environment/ament_prefix_path.dsv
+[1.653s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_description/share/drone_description/environment/path.sh
+[1.669s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_description/share/drone_description/environment/path.dsv
+[1.685s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_description/share/drone_description/local_setup.bash
+[1.701s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_description/share/drone_description/local_setup.sh
+[1.717s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_description/share/drone_description/local_setup.zsh
+[1.733s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_description/share/drone_description/local_setup.dsv
+[1.749s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_description/share/drone_description/package.dsv
+[1.769s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_description/share/ament_index/resource_index/packages/drone_description
+[1.785s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_description/share/drone_description/cmake/drone_descriptionConfig.cmake
+[1.803s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_description/share/drone_description/cmake/drone_descriptionConfig-version.cmake
+[1.820s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_description/share/drone_description/package.xml
+[1.841s] Invoked command in '/home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --install /home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_description

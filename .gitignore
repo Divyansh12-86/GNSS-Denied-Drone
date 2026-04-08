@@ -1,6 +1,11 @@
 # Prerequisites
 *.d
 
+# Virtual Environment
+.venv/
+venv/
+env/
+
 # Compiled Object files
 *.slo
 *.lo
