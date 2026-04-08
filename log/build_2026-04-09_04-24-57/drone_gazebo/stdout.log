@@ -1,0 +1,18 @@
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/worlds/dark_warehouse.sdf
+-- Up-to-date symlink: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/ament_index/resource_index/package_run_dependencies/drone_gazebo
+-- Up-to-date symlink: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/ament_index/resource_index/parent_prefix_path/drone_gazebo
+-- Up-to-date symlink: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/environment/path.sh
+-- Up-to-date symlink: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/environment/path.dsv
+-- Up-to-date symlink: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/local_setup.bash
+-- Up-to-date symlink: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/local_setup.sh
+-- Up-to-date symlink: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/local_setup.zsh
+-- Up-to-date symlink: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/local_setup.dsv
+-- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/package.dsv
+-- Up-to-date symlink: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/ament_index/resource_index/packages/drone_gazebo
+-- Up-to-date symlink: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/cmake/drone_gazeboConfig.cmake
+-- Up-to-date symlink: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/cmake/drone_gazeboConfig-version.cmake
+-- Up-to-date symlink: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/package.xml

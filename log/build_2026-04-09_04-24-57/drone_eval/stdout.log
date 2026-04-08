@@ -1,0 +1,15 @@
+running develop
+running egg_info
+writing drone_eval.egg-info/PKG-INFO
+writing dependency_links to drone_eval.egg-info/dependency_links.txt
+writing entry points to drone_eval.egg-info/entry_points.txt
+writing requirements to drone_eval.egg-info/requires.txt
+writing top-level names to drone_eval.egg-info/top_level.txt
+reading manifest file 'drone_eval.egg-info/SOURCES.txt'
+writing manifest file 'drone_eval.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_eval/lib/python3.12/site-packages/drone-eval.egg-link (link to .)
+Installing measure_latency script to /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_eval/lib/drone_eval
+
+Installed /home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_eval
+running symlink_data

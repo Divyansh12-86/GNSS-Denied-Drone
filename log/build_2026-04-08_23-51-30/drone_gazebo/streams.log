@@ -1,0 +1,42 @@
+[0.378s] Invoking command in '/home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake /home/divyansh/Desktop/GNSS-Denied-Drone/src/drone_gazebo -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo
+[0.490s] -- The C compiler identification is GNU 13.3.0
+[0.617s] -- The CXX compiler identification is GNU 13.3.0
+[0.652s] -- Detecting C compiler ABI info
+[0.833s] -- Detecting C compiler ABI info - done
+[0.848s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.849s] -- Detecting C compile features
+[0.850s] -- Detecting C compile features - done
+[0.865s] -- Detecting CXX compiler ABI info
+[1.036s] -- Detecting CXX compiler ABI info - done
+[1.053s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.054s] -- Detecting CXX compile features
+[1.055s] -- Detecting CXX compile features - done
+[1.062s] -- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[1.309s] -- Found Python3: /home/divyansh/Desktop/GNSS-Denied-Drone/.venv/bin/python3 (found version "3.12.3") found components: Interpreter 
+[1.451s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[1.747s] -- Configuring done (1.4s)
+[1.755s] -- Generating done (0.0s)
+[1.759s] -- Build files have been written to: /home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_gazebo
+[1.769s] Invoked command in '/home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake /home/divyansh/Desktop/GNSS-Denied-Drone/src/drone_gazebo -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo
+[1.771s] Invoking command in '/home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --build /home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_gazebo -- -j8 -l8
+[1.892s] Invoked command in '/home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --build /home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_gazebo -- -j8 -l8
+[1.892s] Invoking command in '/home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_gazebo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --install /home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_gazebo
+[1.915s] -- Install configuration: ""
+[1.916s] -- Execute custom install script
+[1.917s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/worlds/dark_warehouses.sdf
+[1.932s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/ament_index/resource_index/package_run_dependencies/drone_gazebo
+[1.947s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/ament_index/resource_index/parent_prefix_path/drone_gazebo
+[1.961s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/environment/ament_prefix_path.sh
+[1.979s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/environment/ament_prefix_path.dsv
+[1.995s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/environment/path.sh
+[2.010s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/environment/path.dsv
+[2.027s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/local_setup.bash
+[2.041s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/local_setup.sh
+[2.055s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/local_setup.zsh
+[2.069s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/local_setup.dsv
+[2.084s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/package.dsv
+[2.098s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/ament_index/resource_index/packages/drone_gazebo
+[2.114s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/cmake/drone_gazeboConfig.cmake
+[2.128s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/cmake/drone_gazeboConfig-version.cmake
+[2.143s] -- Symlinking: /home/divyansh/Desktop/GNSS-Denied-Drone/install/drone_gazebo/share/drone_gazebo/package.xml
+[2.171s] Invoked command in '/home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_gazebo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PS1=(.venv) \[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ VIRTUAL_ENV_PROMPT=(.venv) /usr/bin/cmake --install /home/divyansh/Desktop/GNSS-Denied-Drone/build/drone_gazebo
