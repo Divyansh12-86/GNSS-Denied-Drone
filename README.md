@@ -41,18 +41,57 @@ The system utilizes a split-architecture to emulate edge computing:
 
 **📂 Project Structure**
 
-Plaintext
-
-GNSS-Denied-Drone/  
-├── .venv/                      \# Python virtual environment (auto-generated)  
-├── setup\_env.sh                \# Automated dependency and PX4 patching script  
-├── run\_demo.sh                 \# One-click multi-terminal simulation launcher  
-├── requirements.txt            \# Python libraries for evaluation (evo, matplotlib)  
-├── README.md                   \# Project documentation  
-└── src/  
-    ├── drone\_gazebo/           \# Digital Twin: Custom warehouse world and models  
-    ├── drone\_eval/             \# Performance: Latency measurement and navigator nodes  
-    └── drone\_bringup/          \# Deployment: Master launch and Rviz configurations
+```text
+GNSS-Denied-Drone/
+├── .gitignore
+├── Dockerfile
+├── README.md
+├── guide.txt
+├── requirements.txt
+├── run_demo.sh
+├── setup_env.sh
+├── final_eval_flight/
+│   ├── final_eval_flight_0.mcap
+│   └── metadata.yaml
+├── flight_data_run_1/
+│   └── flight_data_run_1_0.mcap
+└── src/
+    ├── drone_bringup/
+    │   ├── CMakeLists.txt
+    │   ├── package.xml
+    │   ├── config/
+    │   │   └── rviz_config.rviz
+    │   └── launch/
+    │       └── sim_and_slam.launch.py
+    ├── drone_description/
+    │   ├── CMakeLists.txt
+    │   ├── package.xml
+    │   └── urdf/
+    │       ├── drone.urdf
+    │       └── quadcopter.urdf.xacro
+    ├── drone_eval/
+    │   ├── package.xml
+    │   ├── setup.cfg
+    │   ├── setup.py
+    │   ├── resource/
+    │   │   └── drone_eval
+    │   └── drone_eval/
+    │       ├── __init__.py
+    │       ├── autonomous_navigator.py
+    │       └── measure_latency.py
+    ├── drone_gazebo/
+    │   ├── CMakeLists.txt
+    │   ├── package.xml
+    │   └── worlds/
+    │       └── dark_warehouse.sdf
+    └── drone_slam/
+        ├── CMakeLists.txt
+        ├── package.xml
+        ├── config/
+        │   └── slam_params.yaml
+        └── launch/
+            └── slam_pipeline.launch.py
+```
 
 ## ---
 
@@ -62,64 +101,74 @@ GNSS-Denied-Drone/
 
 Ensure you are using **Ubuntu 22.04 or 24.04** with **ROS 2 (Humble or Jazzy)** and **Docker** installed.
 
-### **2\. Deployment Script**
+### **2. Deployment Script**
 
-Run the setup\_env.sh script to automate the entire installation process. This script handles:
+Run the `setup_env.sh` script to automate the entire installation process. This script handles:
 
-* Installing system-level dependencies (GStreamer for camera simulation).  
-* Creating a ROS-linked Python virtual environment with correct versions (e.g., empy==3.3.4).  
-* Cloning and compiling the Micro-XRCE-DDS communication bridge.  
+* Installing system-level dependencies (GStreamer for camera simulation).
+* Creating a ROS-linked Python virtual environment with correct versions (e.g., `empy==3.3.4`).
+* Cloning and compiling the Micro-XRCE-DDS communication bridge.
 * Downloading and patching the PX4 Autopilot firmware to ignore battery and GPS failsafes for indoor flight.
 
-Bash
-
-chmod \+x setup\_env.sh run\_demo.sh  
-./setup\_env.sh
+```bash
+chmod +x setup_env.sh run_demo.sh
+./setup_env.sh
+```
 
 ## ---
 
 **🕹️ Running the Simulation**
 
-### **1\. Launch the Pipeline**
+### **1. Launch the Pipeline**
 
 Start all logical components by running the launcher:
 
-Bash
-
-./run\_demo.sh
+```bash
+./run_demo.sh
+```
 
 This script opens five terminal tabs for the Bridge, Simulation, SLAM Brain, Performance Evaluator, and Autonomous Pilot.
 
-### **2\. Flight Control**
+### **2. Flight Control**
 
 Once the Gazebo warehouse is visible:
 
-1. Navigate to the **PX4 Terminal** tab.  
-2. **Set Origin:** commander set\_ekf\_origin 47.3977 8.5455 488.0 (Gives the drone a "Home" in the absence of GPS).  
-3. **Arm:** commander arm \-f (Forces the motors to spin despite sensor warnings).  
-4. **Takeoff:** commander takeoff (Climbs to 2.5 meters).  
-5. **Autonomous Mode:** commander mode offboard (Hands steering control to the Python Navigator).
+1. Navigate to the **PX4 Terminal** tab.
+2. Run the following commands in the PX4 shell:
+
+```bash
+commander set_ekf_origin 47.3977 8.5455 488.0
+commander arm -f
+commander takeoff
+commander mode offboard
+```
+
+These commands:
+
+* set the EKF origin for GNSS-denied operation,
+* arm the motors safely for indoor flight, and
+* hand off control to the autonomous navigator.
 
 ## ---
 
 **📊 Evaluation and Reports**
 
-### **Deliverable \#3: Exporting 3D Mapping Data**
+### **Deliverable #3: Exporting 3D Mapping Data**
 
 After the drone has explored the area, save the generated map from the SLAM pipeline:
 
-Bash
+```bash
+ros2 run nav2_map_server map_saver_cli -f ~/Desktop/GNSS-Denied-Drone/final_map
+```
 
-ros2 run nav2\_map\_server map\_saver\_cli \-f \~/Desktop/GNSS-Denied-Drone/final\_map
+### **Deliverable #4: Performance Analysis (Drift & Latency)**
 
-### **Deliverable \#4: Performance Analysis (Drift & Latency)**
+To generate the comparative report required by the Vit mentors, use the `evo` package to compare the drone's estimated trajectory against the ground truth from Gazebo:
 
-To generate the comparative report required by the Vit mentors, use the evo package to compare the drone's estimated trajectory against the ground truth from Gazebo:
-
-Bash
-
-source .venv/bin/activate  
-evo\_ape bag final\_eval\_flight.mcap /fmu/out/vehicle\_odometry /odom \-va \--plot \--plot\_mode xy
+```bash
+source .venv/bin/activate
+evo_ape bag final_eval_flight.mcap /fmu/out/vehicle_odometry /odom -va --plot --plot_mode xy
+```
 
 This command produces a comparative graph and calculates the Absolute Pose Error (APE) to verify that the VIO drift is below the 1.5% target.
 
