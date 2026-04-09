@@ -2,6 +2,7 @@ package.xml
 setup.cfg
 setup.py
 drone_eval/__init__.py
+drone_eval/autonomous_navigator.py
 drone_eval/measure_latency.py
 drone_eval.egg-info/PKG-INFO
 drone_eval.egg-info/SOURCES.txt

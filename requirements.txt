@@ -12,3 +12,6 @@ evo>=1.23.1
 # Standard Python tools
 setuptools>=58.2.0
 pyyaml>=6.0
+
+scipy>=1.7.0
+seaborn>=0.11.2
