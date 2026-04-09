@@ -10,5 +10,10 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    entry_points={'console_scripts': ['measure_latency = drone_eval.measure_latency:main']},
+    entry_points={
+        'console_scripts': [
+            'measure_latency = drone_eval.measure_latency:main',
+            'autonomous_navigator = drone_eval.autonomous_navigator:main',
+        ],
+    },
 )

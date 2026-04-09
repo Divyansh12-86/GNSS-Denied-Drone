@@ -1,2 +1,3 @@
 [console_scripts]
+autonomous_navigator = drone_eval.autonomous_navigator:main
 measure_latency = drone_eval.measure_latency:main

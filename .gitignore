@@ -44,3 +44,21 @@ env/
 
 # debug information files
 *.dwo
+
+# ROS 2 Workspace Directories
+build/
+install/
+log/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# ROS Bag Data (Flight recordings)
+*.db3
+*.bag
+rosbag2*/
+
+# OS generated files
+.DS_Store
+Thumbs.db
