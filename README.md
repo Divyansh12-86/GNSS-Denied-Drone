@@ -1,148 +1,176 @@
-# GNSS-Denied Autonomous UAV Navigation (SITL Prototype)
+# **DP4: Autonomous Navigator for GNSS-Denied Environments (SITL Prototype)**
 
-## 📌 Project Overview
-This project is a Software-In-The-Loop (SITL) demonstration of an autonomous UAV designed for exploration and 3D mapping in GNSS-denied environments (e.g., underground tunnels, dark warehouses). 
+## **📌 Project Overview**
 
-Because physical hardware (like an Nvidia Jetson and a physical drone frame) is substituted with a simulation, this architecture deliberately isolates the computationally heavy SLAM algorithms into a constrained environment (Docker) to prove edge-compute feasibility.
+This project is a comprehensive Software-In-The-Loop (SITL) demonstration of an autonomous Unmanned Aerial Vehicle (UAV) specifically designed for exploration and high-resolution 3D mapping in GNSS-denied environments. These environments, such as underground tunnels and dark warehouses, lack GPS signals and sufficient lighting, presenting significant challenges for standard navigation systems.  
+To simulate a real-world deployment on an edge device like an NVIDIA Jetson, the architecture isolates computationally intensive SLAM (Simultaneous Localization and Mapping) algorithms within a constrained Docker container. This proves that the system can maintain a SLAM pipeline latency of less than 50ms while operating in extreme conditions.
 
-### 🎯 Deliverables Addressed
-1. **Hardware/Software Prototype:** Replaced with a ROS 2 / Gazebo SITL architecture.
-2. **Digital Twin:** A custom Gazebo world replicating a low-light (< 15 lux) warehouse.
-3. **3D Mapping:** Point cloud generation using [Insert your chosen SLAM, e.g., RTAB-Map].
-4. **Performance Report:** Built-in Python evaluation nodes to prove VIO drift < 1.5% and SLAM latency < 50ms.
-5. **Source Code:** This documented ROS 2 `colcon` workspace.
+## ---
 
----
+**🎯 Goals and Design Considerations**
 
-## 🧠 System Architecture & Logic
+The project is built to meet strict performance metrics as defined in the DP4 evaluation criteria:
 
-To convincingly simulate a physical drone, the system is divided into two logical halves:
+* **State Estimation:** Maintain Visual-Inertial Odometry (VIO) drift of less than 1.5% over a 200-meter flight path.  
+* **Environmental Resilience:** Successful operation in low-light environments with less than 15 lux of ambient light.  
+* **Onboard Processing:** A complete SLAM pipeline that maintains processing latency under 50ms.  
+* **Form Factor:** A drone footprint contained within a 350mm x 350mm boundary.
 
-1. **The Environment & Flight Controller (Host PC):** Gazebo simulates the physics, the dark warehouse environment, and the raw sensor data (Stereo Camera/LiDAR). A simulated flight controller (like PX4 SITL) keeps the drone stable.
-2. **The "Edge Compute" Brain (Docker Container):** To prove that our SLAM algorithm can run on an edge device (like a Jetson Nano) with strict < 50ms latency, the SLAM nodes run inside an isolated Docker container with artificially restricted CPU and RAM. This container subscribes to Gazebo's sensor topics, processes the 3D map, and publishes the estimated Odometry back to the flight controller.
+## ---
 
----
+**📦 Deliverables Addressed**
 
-## 📂 Complete Project Structure
+This repository fulfills all five core deliverables for the DP4 evaluation:
 
-Below is the exhaustive file and directory structure for this ROS 2 workspace:
+1. **Hardware/Software Prototype:** A fully functional ROS 2 and Gazebo SITL architecture.  
+2. **Digital Twin & Simulation:** A custom-built Gazebo world replicating a dark warehouse with a high-fidelity simulated quadcopter.  
+3. **3D Mapping Data:** Generation of high-resolution point clouds and 2D occupancy maps of the explored area.  
+4. **Performance Report:** Comparative trajectory analysis (Estimated vs. Ground Truth) and automated latency benchmarking.  
+5. **Source Code:** A documented ROS 2 workspace including custom navigation, evaluation, and deployment scripts.
 
-<pre>
-drone_sitl_ws/
-├── Dockerfile                      # Your edge compute emulator configuration
-├── requirements.txt                # Python dependencies for evaluation scripts
-├── README.md                       # This project documentation
+## ---
+
+**🧠 System Architecture**
+
+The system utilizes a split-architecture to emulate edge computing:
+
+* **Host Environment (SITL):** Runs the Gazebo physics engine and the PX4 Autopilot firmware. Gazebo simulates the dark warehouse and generates raw sensor data from a simulated 3D LiDAR and Stereo Camera.  
+* **Edge Brain (Docker):** A containerized ROS 2 environment that handles the "heavy lifting" of SLAM. It processes sensor data and returns odometry to the flight controller, simulating an onboard computer with restricted resources.
+
+## ---
+
+**📂 Project Structure**
+
+```text
+GNSS-Denied-Drone/
+├── .gitignore
+├── Dockerfile
+├── README.md
+├── guide.txt
+├── requirements.txt
+├── run_demo.sh
+├── setup_env.sh
+├── final_eval_flight/
+│   ├── final_eval_flight_0.mcap
+│   └── metadata.yaml
+├── flight_data_run_1/
+│   └── flight_data_run_1_0.mcap
 └── src/
-    ├── drone_bringup/              # Master launch package
+    ├── drone_bringup/
     │   ├── CMakeLists.txt
     │   ├── package.xml
-    │   ├── launch/
-    │   │   └── sim_and_slam.launch.py
-    │   └── config/
-    │       └── rviz_config.rviz    # Saves visualization window layout
-    ├── drone_description/          # The 3D model (<350mm constraint)
+    │   ├── config/
+    │   │   └── rviz_config.rviz
+    │   └── launch/
+    │       └── sim_and_slam.launch.py
+    ├── drone_description/
     │   ├── CMakeLists.txt
     │   ├── package.xml
-    │   ├── urdf/
-    │   │   └── quadcopter.urdf.xacro # The exact physical/sensor definitions
-    │   └── meshes/
-    │       └── drone_frame.dae     # Visual CAD files for the drone body
-    ├── drone_gazebo/               # The environment (<15 lux constraint)
+    │   └── urdf/
+    │       ├── drone.urdf
+    │       └── quadcopter.urdf.xacro
+    ├── drone_eval/
+    │   ├── package.xml
+    │   ├── setup.cfg
+    │   ├── setup.py
+    │   ├── resource/
+    │   │   └── drone_eval
+    │   └── drone_eval/
+    │       ├── __init__.py
+    │       ├── autonomous_navigator.py
+    │       └── measure_latency.py
+    ├── drone_gazebo/
     │   ├── CMakeLists.txt
     │   ├── package.xml
-    │   ├── worlds/
-    │   │   └── dark_warehouse.world 
-    │   └── models/
-    │       └── warehouse_walls/    # 3D assets for the simulation world
-    │           ├── model.sdf
-    │           └── model.config
-    ├── drone_slam/                 # The "Jetson Brain" SLAM implementation
-    │   ├── CMakeLists.txt
-    │   ├── package.xml
-    │   ├── launch/
-    │   │   └── slam_pipeline.launch.py # Launched inside Docker container
-    │   └── config/
-    │       └── slam_params.yaml    # SLAM algorithm tuning
-    └── drone_eval/                 # Evaluation scripts (Python package)
-        ├── setup.py                # Build instructions for Python ROS 2 nodes
-        ├── setup.cfg
+    │   └── worlds/
+    │       └── dark_warehouse.sdf
+    └── drone_slam/
+        ├── CMakeLists.txt
         ├── package.xml
-        ├── resource/
-        │   └── drone_eval          # Required blank marker file
-        └── drone_eval/
-            ├── __init__.py
-            └── measure_latency.py  # Script calculating <50ms constraint
-</pre>
+        ├── config/
+        │   └── slam_params.yaml
+        └── launch/
+            └── slam_pipeline.launch.py
+```
 
----
+## ---
 
-## ⚙️ Prerequisites
+**🛠️ Installation and Setup**
 
-Before running this project, ensure you have the following installed on an Ubuntu 22.04 system:
-* [ROS 2 Humble](https://docs.ros.org/en/humble/Installation.html)
-* [Gazebo Classic 11](https://classic.gazebosim.org/tutorials?tut=ros2_installing)
-* [Docker](https://docs.docker.com/engine/install/ubuntu/)
-* Python 3.10+
+### **1\. Prerequisites**
 
----
+Ensure you are using **Ubuntu 22.04 or 24.04** with **ROS 2 (Humble or Jazzy)** and **Docker** installed.
 
-## 🚀 Installation & Setup
+### **2. Deployment Script**
 
-**1. Clone the repository and install dependencies:**
+Run the `setup_env.sh` script to automate the entire installation process. This script handles:
+
+* Installing system-level dependencies (GStreamer for camera simulation).
+* Creating a ROS-linked Python virtual environment with correct versions (e.g., `empy==3.3.4`).
+* Cloning and compiling the Micro-XRCE-DDS communication bridge.
+* Downloading and patching the PX4 Autopilot firmware to ignore battery and GPS failsafes for indoor flight.
 
 ```bash
-mkdir -p ~/drone_sitl_ws/src
-cd ~/drone_sitl_ws
-# (Clone or copy your project files into the src directory here)
+chmod +x setup_env.sh run_demo.sh
+./setup_env.sh
+```
 
-# Install Python requirements for the evaluation scripts
-pip install -r requirements.txt
+## ---
 
-# Install ROS 2 dependencies using rosdep
-rosdep update
-rosdep install --from-paths src --ignore-src -r -y
+**🕹️ Running the Simulation**
 
-**2. Build the Host Workspace (Simulation):**
-\`\`\`bash
-cd ~/drone_sitl_ws
-colcon build --symlink-install
-source install/setup.bash
-\`\`\`
+### **1. Launch the Pipeline**
 
-**3. Build the Edge Docker Image:**
-\`\`\`bash
-cd ~/drone_sitl_ws
-docker build -t drone_edge_brain .
-\`\`\`
+Start all logical components by running the launcher:
 
----
+```bash
+./run_demo.sh
+```
 
-## 🕹️ Usage Instructions (The Demonstration)
+This script opens five terminal tabs for the Bridge, Simulation, SLAM Brain, Performance Evaluator, and Autonomous Pilot.
 
-To run the full SITL demonstration, follow these steps in separate terminal windows.
+### **2. Flight Control**
 
-**Step 1: Launch the Simulated World**
-This starts Gazebo with the dark warehouse and spawns the drone.
-\`\`\`bash
-source ~/drone_sitl_ws/install/setup.bash
-ros2 launch drone_bringup sim_and_slam.launch.py
-\`\`\`
+Once the Gazebo warehouse is visible:
 
-**Step 2: Start the "Edge" SLAM Brain**
-This launches the Docker container, simulating the Jetson's onboard processing. It limits the container to 4 CPU cores and 4GB of RAM.
-\`\`\`bash
-docker run --net=host --cpus="4" --memory="4g" drone_edge_brain
-\`\`\`
+1. Navigate to the **PX4 Terminal** tab.
+2. Run the following commands in the PX4 shell:
 
-**Step 3: Run the Performance Evaluators**
-While the drone is exploring, run the custom scripts to measure latency and record the trajectory for the drift report.
-\`\`\`bash
-source ~/drone_sitl_ws/install/setup.bash
-ros2 run drone_eval measure_latency.py
-\`\`\`
+```bash
+commander set_ekf_origin 47.3977 8.5455 488.0
+commander arm -f
+commander takeoff
+commander mode offboard
+```
 
-**Step 4: Generate the Drift Report**
-After stopping the simulation, use `evo` to compare the SLAM trajectory against Gazebo's ground truth.
-\`\`\`bash
-evo_traj odom /slam/odom --ref /gazebo/ground_truth -p --plot_mode xy
-\`\`\`
+These commands:
+
+* set the EKF origin for GNSS-denied operation,
+* arm the motors safely for indoor flight, and
+* hand off control to the autonomous navigator.
+
+## ---
+
+**📊 Evaluation and Reports**
+
+### **Deliverable #3: Exporting 3D Mapping Data**
+
+After the drone has explored the area, save the generated map from the SLAM pipeline:
+
+```bash
+ros2 run nav2_map_server map_saver_cli -f ~/Desktop/GNSS-Denied-Drone/final_map
+```
+
+### **Deliverable #4: Performance Analysis (Drift & Latency)**
+
+To generate the comparative report required by the Vit mentors, use the `evo` package to compare the drone's estimated trajectory against the ground truth from Gazebo:
+
+```bash
+source .venv/bin/activate
+evo_ape bag final_eval_flight.mcap /fmu/out/vehicle_odometry /odom -va --plot --plot_mode xy
+```
+
+This command produces a comparative graph and calculates the Absolute Pose Error (APE) to verify that the VIO drift is below the 1.5% target.
+
+## ---
+
